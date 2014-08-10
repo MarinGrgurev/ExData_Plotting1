@@ -33,7 +33,7 @@ data[,(colnames(data)[-c(1:6)]):=lapply(.SD, as.integer),.SDcols=colnames(data)[
 
 ## Changing and renaming the Time column to be of POSIXct class and removing unused
 ## Date column 
-data[,Time:=as.POSIXct(strptime(paste(as.Date(data[,Date], "%d/%m/%Y"), data[,Time]), "%Y-%m-%d %H:%M:%S"))]
+data[,Time:=as.POSIXct(strptime(paste(data[,Date], data[,Time]), "%Y-%m-%d %H:%M:%S"))]
 setnames(data,"Time","DateTime")
 data[,Date:=NULL]
 

@@ -7,9 +7,9 @@
 ## More details on: https://github.com/MarinGrgurev/ExData_Plotting1
 
 ## Note: This code assume that the input file "household_power_consumption.txt" is 
-## located in working directory. If not, file can be downloaded from  UC Irvine Machine 
-## Learning Repository in the "Electric power consumption" dataset which can be downloaded 
-## from: https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
+## located in working dir. If not, file can be downloaded from  UC Irvine Machine Learning
+## Repository in the "Electric power consumption" dataset which can be downloaded from:
+## https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
 ## The code for downloading the dataset is shown below but is commented.
 
 ## Downloading and unzipping file
@@ -33,7 +33,7 @@ data[,(colnames(data)[-c(1:6)]):=lapply(.SD, as.integer),.SDcols=colnames(data)[
 
 ## Changing and renaming the Time column to be of POSIXct class and removing unused
 ## Date column 
-data[,Time:=as.POSIXct(strptime(paste(as.Date(data[,Date], "%d/%m/%Y"), data[,Time]), "%Y-%m-%d %H:%M:%S"))]
+data[,Time:=as.POSIXct(strptime(paste(data[,Date], data[,Time]), "%Y-%m-%d %H:%M:%S"))]
 setnames(data,"Time","DateTime")
 data[,Date:=NULL]
 
